@@ -12,6 +12,7 @@ import {
 
 import { BirthdayData } from './types';
 import { defaultBirthdayData } from './defaultData';
+import { resolveImageUrl } from './imageResolver';
 import FriendshipTimer from './components/FriendshipTimer';
 import StarSky from './components/StarSky';
 import Timeline from './components/Timeline';
@@ -19,7 +20,8 @@ import SecretAdminPanel from './components/SecretAdminPanel';
 
 function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isModal?: boolean }) {
   const [error, setError] = useState(false);
-  const isBrokenUrl = !src || src.includes("sites.google") || src.includes("googleusercontent") || src.includes("polaroid_");
+  const resolvedSrc = resolveImageUrl(src);
+  const isBrokenUrl = !resolvedSrc || resolvedSrc.includes("sites.google") || resolvedSrc.includes("googleusercontent") || resolvedSrc.includes("polaroid_");
 
   if (error || isBrokenUrl) {
     return (
@@ -29,11 +31,11 @@ function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isM
           {isModal ? "Foto Original não encontrada" : `Foto #${(index ?? 0) + 1} original`}
         </span>
         <span className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-1 max-w-[180px] leading-relaxed">
-          Para exibir a foto real sem IA, envie seu arquivo para a pasta: <br />
+          Para exibir a foto no Vercel, coloque o arquivo na pasta <code className="text-[#8c7b6c] dark:text-[#c9a66b] font-mono font-bold">public/</code> e use o caminho <br />
           <code className="bg-zinc-200 dark:bg-zinc-800 px-1 py-0.5 rounded text-[#8c7b6c] dark:text-[#c9a66b] font-mono text-[9px] block mt-1.5 shadow-inner select-all">
-            src/assets/images/foto{(index ?? 0) + 1}_...jpg
+            /foto{(index ?? 0) + 1}.jpg
           </code>
-          no menu esquerdo de arquivos.
+          no menu esquerdo ou no Painel Secreto.
         </span>
       </div>
     );
@@ -41,7 +43,7 @@ function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isM
 
   return (
     <img
-      src={src}
+      src={resolvedSrc}
       alt=""
       referrerPolicy="no-referrer"
       onError={() => setError(true)}

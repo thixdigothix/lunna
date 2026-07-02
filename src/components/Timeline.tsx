@@ -1,5 +1,6 @@
 import { TimelineEvent } from '../types';
 import { Calendar, Heart } from 'lucide-react';
+import { resolveImageUrl } from '../imageResolver';
 
 interface TimelineProps {
   events: TimelineEvent[];
@@ -62,11 +63,11 @@ export default function Timeline({ events, titlePill, title, subtitle, onPhotoCl
                 {/* Event Photo */}
                 {event.photoUrl && (
                   <div 
-                    onClick={() => onPhotoClick?.(event.photoUrl, event.title)}
+                    onClick={() => onPhotoClick?.(resolveImageUrl(event.photoUrl), event.title)}
                     className="my-3 overflow-hidden rounded-xl h-44 sm:h-52 w-full relative group cursor-zoom-in"
                   >
                     <img 
-                      src={event.photoUrl} 
+                      src={resolveImageUrl(event.photoUrl)} 
                       alt={event.title}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

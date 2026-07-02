@@ -1,4 +1,5 @@
 import { BirthdayData } from './types';
+import foto1Acai from './assets/images/foto1_acai.jpg';
 
 export const defaultBirthdayData: BirthdayData = {
   name: "Lunna",
@@ -9,7 +10,7 @@ export const defaultBirthdayData: BirthdayData = {
   heroSecondaryText: "Página criada com o objetivo de te presentear sem que você reclame",
   realTimeTributeText: "Lunna, você é de longe a pessoa mais incrível que eu tive a oportunidade de conhecer. Sou muito grato por tudo e quis fazer esse site contando um pouco da nossa história.",
   photos: [
-    "/src/assets/images/foto1_acai.jpg",
+    foto1Acai,
     "/src/assets/images/foto2_santos.jpg",
     "/src/assets/images/foto3_cabeca_para_baixo.jpg",
     "/src/assets/images/foto4_natureza.jpg"

@@ -4,6 +4,7 @@ import {
   Upload, Plus, Trash2, Save, RotateCcw, Download, Eye, Sparkles, HelpCircle, Lock, Unlock, FileText
 } from 'lucide-react';
 import { BirthdayData, TimelineEvent, MemoryItem, CuriosityItem } from '../types';
+import { resolveImageUrl } from '../imageResolver';
 
 interface SecretAdminPanelProps {
   isOpen: boolean;
@@ -222,7 +223,7 @@ export default function SecretAdminPanel({
                 <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
                   <strong>Opção 1 (Recomendada e Fácil):</strong> Clique no botão <span className="text-[#8c7b6c] dark:text-[#c9a66b] font-semibold">"Carregar do PC"</span> abaixo da foto. Ela será convertida automaticamente para o site e salva de imediato!
                   <br />
-                  <strong>Opção 2 (Menu Arquivos):</strong> No painel esquerdo do AI Studio, arraste suas fotos para a pasta <code>src/assets/images/</code> e digite o caminho no campo abaixo (ex: <code>/src/assets/images/minha_foto.jpg</code>).
+                  <strong>Opção 2 (Para o Vercel):</strong> Coloque o arquivo de foto na pasta <code>public/</code> do seu projeto e digite o caminho com barra no campo abaixo (ex: <code>/foto1_acai.jpg</code>).
                 </p>
               </div>
 
@@ -232,7 +233,7 @@ export default function SecretAdminPanel({
                     {/* Preview */}
                     <div className="w-28 h-28 shrink-0 bg-zinc-100 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 overflow-hidden flex items-center justify-center relative group">
                       {photo ? (
-                        <img src={photo} alt="" className="w-full h-full object-cover" />
+                        <img src={resolveImageUrl(photo)} alt="" className="w-full h-full object-cover" />
                       ) : (
                         <span className="text-2xl">📷</span>
                       )}
@@ -335,7 +336,7 @@ export default function SecretAdminPanel({
 
                     <div className="w-24 h-24 shrink-0 bg-zinc-100 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 overflow-hidden flex items-center justify-center">
                       {item.photoUrl ? (
-                        <img src={item.photoUrl} alt="" className="w-full h-full object-cover" />
+                        <img src={resolveImageUrl(item.photoUrl)} alt="" className="w-full h-full object-cover" />
                       ) : (
                         <span className="text-xl">📅</span>
                       )}

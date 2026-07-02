@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Star, Sparkles, X, Heart } from 'lucide-react';
 import { SkyMessage } from '../types';
+import { resolveImageUrl } from '../imageResolver';
 
 interface StarSkyProps {
   messages: SkyMessage[];
@@ -103,12 +104,12 @@ export default function StarSky({ messages, titlePill, title, subtitle, onPhotoC
                 <>
                   {/* Photo Column */}
                   <div 
-                    onClick={() => onPhotoClick?.(selectedMessage.photoUrl!, selectedMessage.text)}
+                    onClick={() => onPhotoClick?.(resolveImageUrl(selectedMessage.photoUrl!), selectedMessage.text)}
                     className="w-full md:w-1/2 aspect-square md:aspect-[4/5] rounded-xl overflow-hidden bg-black border border-yellow-500/20 shadow-xl flex items-center justify-center shrink-0 cursor-zoom-in group/photo relative"
                     title="Clique para ver em tamanho real"
                   >
                     <img 
-                      src={selectedMessage.photoUrl} 
+                      src={resolveImageUrl(selectedMessage.photoUrl)} 
                       alt="" 
                       className="w-full h-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
                       referrerPolicy="no-referrer"
