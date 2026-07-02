@@ -5,7 +5,7 @@ export const defaultBirthdayData: BirthdayData = {
   age: 19,
   birthDate: "2007-07-12",
   friendshipStartDate: "2022-04-13",
-  heroSubtitle: "Um presente bobo, de uma pessoa boba pra uma pessoa incrível.",
+  heroSubtitle: "Um presente bobo de uma pessoa boba pra uma pessoa incrível.",
   heroSecondaryText: "Página criada com o objetivo de te presentear sem que você reclame",
   realTimeTributeText: "Lunna, você é de longe a pessoa mais incrível que eu tive a oportunidade de conhecer. Sou muito grato por tudo e quis fazer esse site contando um pouco da nossa história.",
   photos: [
