@@ -1,24 +1,24 @@
 import { BirthdayData } from './types';
 
 export const defaultBirthdayData: BirthdayData = {
-  name: "Mariana",
-  age: 23,
-  birthDate: "2003-06-25",
-  friendshipStartDate: "2018-02-15",
-  heroSubtitle: "Que o dia de hoje seja tão luminoso e incrível quanto o seu coração.",
-  heroSecondaryText: "Esta é uma página criada com todo carinho do mundo para celebrar a existência de uma pessoa verdadeiramente insubstituível. Prepare-se, pois cada detalhe aqui foi planejado para colocar um sorriso bem grande no seu rosto!",
-  realTimeTributeText: "Mariana, você é de longe uma das pessoas mais fantásticas que orbitam este mundo. Obrigada por compartilhar sua luz, seu amor sincero, suas teorias engraçadas e sua lealdade inabalável. Que o dia de hoje seja o portal para os anos mais bonitos da sua jornada!",
+  name: "Lunna",
+  age: 19,
+  birthDate: "2007-07-12",
+  friendshipStartDate: "2022-04-13",
+  heroSubtitle: "Um presente bobo, de uma pessoa boba pra uma pessoa incrível.",
+  heroSecondaryText: "Página criada com o objetivo de te presentear sem que você reclame",
+  realTimeTributeText: "Lunna, você é de longe a pessoa mais incrível que eu tive a oportunidade de conhecer. Sou muito grato por tudo e quis fazer esse site contando um pouco da nossa história.",
   photos: [
-    "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600"
+    "/src/assets/images/foto1_acai.jpg",
+    "/src/assets/images/foto2_santos.jpg",
+    "/src/assets/images/foto3_cabeca_para_baixo.jpg",
+    "/src/assets/images/foto4_natureza.jpg"
   ],
   photoCaptions: [
-    "O brilho de um riso leve e uma alma cheia de energia positiva!",
-    "Parceria real: rir até a barriga doer é a nossa especialidade.",
-    "A caminhada fica infinitamente melhor com você ao meu lado.",
-    "Colecionando momentos solares e inesquecíveis pelo mundo."
+    "Tomando aquele açaí merecido e fazendo caretas!",
+    "Camisa do Santos e biquinho: a nossa melhor versão!",
+    "Nossas perspectivas de cabeça para baixo, sempre rindo de tudo.",
+    "Aproveitando o dia em meio à natureza com essa parceria incrível!"
   ],
   timeline: [
     {
@@ -150,7 +150,7 @@ export const defaultBirthdayData: BirthdayData = {
   finalLetterSignOff: "Sua melhor amizade,",
   finalLetterSignature: "Com Carinho e Amor Infinito",
   surpriseBoxTitle: "Seu Presente Está Pronto!",
-  surpriseBoxMessage: "Mari, você é uma verdadeira joia na vida de todos que te cercam. Hoje celebramos você por inteiro! Que esta nova primavera traga o triplo da alegria que você espalha por aqui. Continue brilhando forte!",
+  surpriseBoxMessage: "Lunna, você é uma verdadeira joia na vida de todos que te cercam. Hoje celebramos você por inteiro! Que esta nova primavera traga o triplo da alegria que você espalha por aqui. Continue brilhando forte!",
 
   polaroidTitlePill: "📸 Galeria de Sorrisos",
   polaroidTitle: "Nossos Momentos Polaroid",

@@ -15,15 +15,52 @@ import { defaultBirthdayData } from './defaultData';
 import FriendshipTimer from './components/FriendshipTimer';
 import StarSky from './components/StarSky';
 import Timeline from './components/Timeline';
-import EditorPanel from './components/EditorPanel';
+import SecretAdminPanel from './components/SecretAdminPanel';
+
+function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isModal?: boolean }) {
+  const [error, setError] = useState(false);
+  const isBrokenUrl = !src || src.includes("sites.google") || src.includes("googleusercontent") || src.includes("polaroid_");
+
+  if (error || isBrokenUrl) {
+    return (
+      <div className={`w-full h-full flex flex-col items-center justify-center bg-[#f7f4ec] dark:bg-zinc-900 p-3 text-center border border-dashed border-[#c9a66b]/50 ${isModal ? 'py-16 min-h-[300px]' : ''}`}>
+        <span className="text-3xl mb-1.5 animate-pulse">📷</span>
+        <span className="text-xs font-serif italic text-zinc-700 dark:text-zinc-300 font-semibold">
+          {isModal ? "Foto Original não encontrada" : `Foto #${(index ?? 0) + 1} original`}
+        </span>
+        <span className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-1 max-w-[180px] leading-relaxed">
+          Para exibir a foto real sem IA, envie seu arquivo para a pasta: <br />
+          <code className="bg-zinc-200 dark:bg-zinc-800 px-1 py-0.5 rounded text-[#8c7b6c] dark:text-[#c9a66b] font-mono text-[9px] block mt-1.5 shadow-inner select-all">
+            src/assets/images/foto{(index ?? 0) + 1}_...jpg
+          </code>
+          no menu esquerdo de arquivos.
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt=""
+      referrerPolicy="no-referrer"
+      onError={() => setError(true)}
+      className={isModal ? "max-h-[70vh] max-w-full object-contain" : "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"}
+    />
+  );
+}
 
 export default function App() {
   // Persistence state
   const [data, setData] = useState<BirthdayData>(() => {
-    const saved = localStorage.getItem('birthday_tribute_data_v2');
+    const saved = localStorage.getItem('birthday_tribute_data_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
+        if (parsed.name === "Mariana") {
+          localStorage.removeItem('birthday_tribute_data_v4');
+          return defaultBirthdayData;
+        }
         return { ...defaultBirthdayData, ...parsed };
       } catch {
         return defaultBirthdayData;
@@ -32,11 +69,8 @@ export default function App() {
     return defaultBirthdayData;
   });
 
-  // Dark/Light State
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    const savedTheme = localStorage.getItem('birthday_theme_v2');
-    return savedTheme === 'dark';
-  });
+  // Locked to Dark Mode for the starry sky and premium night effect
+  const darkMode = true;
 
   // Interaction controls
   const [surpriseUnlocked, setSurpriseUnlocked] = useState(false);
@@ -45,51 +79,43 @@ export default function App() {
   const [openedSecret, setOpenedSecret] = useState<number | null>(null);
   const [finalGiftOpened, setFinalGiftOpened] = useState(false);
   const [floatingHearts, setFloatingHearts] = useState<{id: number, left: number, size: number, delay: number, duration: number}[]>([]);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  // Secret admin keyboard shortcut (Alt+E or F2)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.altKey && e.key.toLowerCase() === 'e') || e.key === 'F2') {
+        e.preventDefault();
+        setIsAdminOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
   
   // Typing state for long message
   const [typedMessage, setTypedMessage] = useState("");
   const letterRef = useRef<HTMLDivElement | null>(null);
 
-  // Check if we should show the editor panel (e.g. if URL has ?edit=true or inside development environment)
-  const [showEditor, setShowEditor] = useState(false);
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const isDevHost = window.location.hostname.includes('ais-dev') || 
-                      window.location.hostname === 'localhost' || 
-                      window.location.hostname === '127.0.0.1';
-    if (params.get('edit') === 'true' || isDevHost) {
-      setShowEditor(true);
-    }
-  }, []);
-
   // Sync state to local storage
   const handleUpdateData = (newData: BirthdayData) => {
     setData(newData);
-    localStorage.setItem('birthday_tribute_data_v2', JSON.stringify(newData));
+    localStorage.setItem('birthday_tribute_data_v4', JSON.stringify(newData));
   };
 
   const handleResetData = () => {
-    if (window.confirm("Deseja realmente voltar aos dados padrões de exemplo para a Mariana? Isso limpará suas edições personalizadas atuais.")) {
+    if (window.confirm("Deseja realmente voltar aos dados padrões de exemplo para a Lunna? Isso limpará suas edições personalizadas atuais.")) {
       setData(defaultBirthdayData);
-      localStorage.setItem('birthday_tribute_data_v2', JSON.stringify(defaultBirthdayData));
+      localStorage.setItem('birthday_tribute_data_v4', JSON.stringify(defaultBirthdayData));
     }
   };
 
-  // Toggle theme helper
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
-
+  // Ensure Dark class is always on root element
   useEffect(() => {
     const root = window.document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('birthday_theme_v2', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('birthday_theme_v2', 'light');
-    }
-  }, [darkMode]);
+    root.classList.add('dark');
+    localStorage.setItem('birthday_theme_v2', 'dark');
+  }, []);
 
   // Occasional heart generators for a sweet physical presence
   useEffect(() => {
@@ -216,30 +242,12 @@ export default function App() {
 
       {/* FIXED FLOATING CONTROLS PANEL */}
       <div className="fixed top-6 left-6 z-40 flex items-center gap-3">
-        {/* Dark Mode Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="p-2.5 rounded-none bg-[#fdfbf7]/95 dark:bg-zinc-900/95 border border-[#c9a66b]/30 dark:border-zinc-800 shadow-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-[#c9a66b] dark:text-[#dfbc83] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#c9a66b]"
-          title={darkMode ? "Ativar Modo Claro" : "Ativar Modo Escuro"}
-        >
-          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-
         {/* Display Status Indicator */}
         <div className="hidden md:flex items-center gap-1.5 px-3 py-1 bg-[#fdfbf7]/95 dark:bg-zinc-900/95 border border-[#c9a66b]/30 dark:border-zinc-800 rounded-none text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pointer-events-none shadow-sm font-serif italic">
           <span className="w-2 h-2 rounded-full bg-[#c9a66b] animate-pulse"></span>
           Modo Homenagem Ativo
         </div>
       </div>
-
-      {/* DYNAMIC JSON CONFIGURATION PANEL */}
-      {showEditor && (
-        <EditorPanel 
-          data={data} 
-          onUpdate={handleUpdateData} 
-          onReset={handleResetData} 
-        />
-      )}
 
       {/* ----- HERO SECTION ----- */}
       <section 
@@ -392,12 +400,7 @@ export default function App() {
                   >
                     {/* Image space wrapper */}
                     <div className="aspect-square w-full overflow-hidden bg-zinc-150 dark:bg-zinc-950 rounded-none relative">
-                      <img
-                        src={photoUrl}
-                        alt=""
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
+                      <PolaroidImg src={photoUrl} index={idx} />
                       {/* Hover tint overlay */}
                       <div className="absolute inset-0 bg-[#c9a66b]/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span className="px-3 py-1.5 bg-zinc-950/85 backdrop-blur-xs text-[10px] uppercase font-bold tracking-widest text-[#fdfbf7] rounded-none border border-[#c9a66b]/30">Ampliar</span>
@@ -788,12 +791,7 @@ export default function App() {
             className="bg-[#fdfbf7] dark:bg-zinc-950 p-4 pb-8 rounded-none max-w-lg w-full shadow-2xl relative border-4 border-double border-[#c9a66b]/30 animate-slideIn"
           >
             <div className="max-h-[70vh] w-full rounded-none overflow-hidden bg-zinc-150 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center">
-              <img 
-                src={selectedPhoto} 
-                alt="" 
-                referrerPolicy="no-referrer"
-                className="max-h-[70vh] max-w-full object-contain" 
-              />
+              <PolaroidImg src={selectedPhoto} index={0} isModal={true} />
             </div>
             
             {selectedPhotoCaption && (
@@ -823,8 +821,37 @@ export default function App() {
           <div className="text-[9px] text-zinc-400 font-mono">
             {data.name} & Co. Constellation Inc.
           </div>
+          <div className="pt-2">
+            <button
+              onClick={() => setIsAdminOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#c9a66b]/10 hover:bg-[#c9a66b] text-[#c9a66b] hover:text-black border border-[#c9a66b]/40 text-[10px] uppercase font-bold tracking-widest transition-all rounded-none"
+            >
+              <Sparkles className="w-3 h-3" /> Abrir Painel Secreto de Edição (Alt+E)
+            </button>
+          </div>
         </div>
       </footer>
+
+      {/* Floating Secret Admin Panel Button */}
+      <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
+        <button
+          onClick={() => setIsAdminOpen(true)}
+          className="group flex items-center gap-2 bg-zinc-900/95 dark:bg-zinc-950/95 hover:bg-[#c9a66b] text-[#c9a66b] hover:text-black border-2 border-[#c9a66b] px-3.5 py-2.5 shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-105"
+          title="Abrir Painel Secreto de Edição (Alt+E ou F2)"
+        >
+          <Sparkles className="w-4 h-4 animate-spin-slow group-hover:text-black text-[#c9a66b]" />
+          <span className="text-xs font-serif font-bold uppercase tracking-wider">Painel Secreto de Edição</span>
+        </button>
+      </div>
+
+      {/* Secret Admin Panel Modal */}
+      <SecretAdminPanel
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        data={data}
+        onUpdate={handleUpdateData}
+        onReset={handleResetData}
+      />
 
     </div>
   );
