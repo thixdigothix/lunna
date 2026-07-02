@@ -53,12 +53,12 @@ function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isM
 export default function App() {
   // Persistence state
   const [data, setData] = useState<BirthdayData>(() => {
-    const saved = localStorage.getItem('birthday_tribute_data_v4');
+    const saved = localStorage.getItem('birthday_tribute_data_v5');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
         if (parsed.name === "Mariana") {
-          localStorage.removeItem('birthday_tribute_data_v4');
+          localStorage.removeItem('birthday_tribute_data_v5');
           return defaultBirthdayData;
         }
         return { ...defaultBirthdayData, ...parsed };
@@ -100,13 +100,13 @@ export default function App() {
   // Sync state to local storage
   const handleUpdateData = (newData: BirthdayData) => {
     setData(newData);
-    localStorage.setItem('birthday_tribute_data_v4', JSON.stringify(newData));
+    localStorage.setItem('birthday_tribute_data_v5', JSON.stringify(newData));
   };
 
   const handleResetData = () => {
     if (window.confirm("Deseja realmente voltar aos dados padrões de exemplo para a Lunna? Isso limpará suas edições personalizadas atuais.")) {
       setData(defaultBirthdayData);
-      localStorage.setItem('birthday_tribute_data_v4', JSON.stringify(defaultBirthdayData));
+      localStorage.setItem('birthday_tribute_data_v5', JSON.stringify(defaultBirthdayData));
     }
   };
 
