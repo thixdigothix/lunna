@@ -29,13 +29,19 @@ export function resolveImageUrl(path: string | undefined): string {
     }
   }
 
-  // 4. If path starts with "/src/assets/images/" or "src/assets/images/", strip prefix so Vercel can serve from /public
+  // 4. If path starts with "/src/assets/images/" or "src/assets/images/" or "/public/", strip prefix so Vercel can serve from /public
   // In Vercel and Vite production, any file placed inside the /public folder is served at the root (e.g., /foto1_acai.jpg)
   if (path.startsWith('/src/assets/images/')) {
     return path.replace('/src/assets/images/', '/');
   }
   if (path.startsWith('src/assets/images/')) {
     return path.replace('src/assets/images/', '/');
+  }
+  if (path.startsWith('/public/')) {
+    return path.replace('/public/', '/');
+  }
+  if (path.startsWith('public/')) {
+    return path.replace('public/', '/');
   }
 
   return path;
