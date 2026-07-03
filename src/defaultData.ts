@@ -20,7 +20,7 @@ export const defaultBirthdayData: BirthdayData = {
   ],
   photoCaptions: [
     "A primeira de muitas, nossa primeira foto com açaí!",
-    "Talvez nossa melhor foto até hoje",
+    "Talvez nossa melhor foto até hoje.",
     "Não sei, me traz uma vibe boa essa aqui.",
     "Essa é só engraçada, mas eu acho muito boa kkkkk"
   ],
