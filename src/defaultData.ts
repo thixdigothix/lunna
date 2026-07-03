@@ -178,7 +178,7 @@ export const defaultBirthdayData: BirthdayData = {
   starsSubtitle: "Passe o mouse ou toque nas estrelas cintilantes do céu noturno para revelar votos de felicidade ocultos!",
 
   // Default values for customizable text properties
-  heroBadgeText: "Hoje é um dia muito especial",
+  heroBadgeText: "PARABÉNS!!!",
   heroTitlePrefix: "Feliz Aniversário,",
   heroBtnText: "Abrir Surpresa",
   heroScrollHelperText: "Ver Homenagem",
