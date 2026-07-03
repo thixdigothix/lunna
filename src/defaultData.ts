@@ -16,10 +16,10 @@ export const defaultBirthdayData: BirthdayData = {
     "/src/assets/images/foto4_natureza.jpg"
   ],
   photoCaptions: [
-    "Tomando aquele açaí merecido e fazendo caretas!",
-    "Camisa do Santos e biquinho: a nossa melhor versão!",
-    "Nossas perspectivas de cabeça para baixo, sempre rindo de tudo.",
-    "Aproveitando o dia em meio à natureza com essa parceria incrível!"
+    "A primeira de muitas, nossa primeira foto com açaí!",
+    "Talvez nossa melhor foto até hoje",
+    "Não sei, me traz uma vibe boa essa aqui.",
+    "Essa é só engraçada, mas eu acho muito boa kkkkk"
   ],
   timeline: [
     {
