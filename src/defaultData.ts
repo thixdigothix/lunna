@@ -23,6 +23,12 @@ import foto3Cabeca from './assets/images/foto3_cabeca_para_baixo.jpg';
 import foto4Natureza from './assets/images/foto4_natureza.jpg';
 import foto5Escola from './assets/images/foto5_escola.jpg';
 
+import timeline2022 from './assets/images/timeline_2022.jpg';
+import timeline2023 from './assets/images/timeline_2023.jpg';
+import timeline2024 from './assets/images/timeline_2024.png';
+import timeline2025 from './assets/images/timeline_2025.png';
+import timeline2026 from './assets/images/timeline_2026.png';
+
 export const defaultBirthdayData: BirthdayData = {
   name: "Lunna",
   age: 19,
@@ -49,35 +55,35 @@ export const defaultBirthdayData: BirthdayData = {
       date: "2022 - O Ponto de Partida",
       title: "O Início de Tudo",
       description: "O começo da nossa amizade. Quem diria que ali, entre risadas, conversas e o dia a dia, nasceria uma parceria tão incrível e inseparável?",
-      photoUrl: foto5Escola
+      photoUrl: timeline2022
     },
     {
       id: "tl-2",
       date: "2023 - Aventuras",
       title: "Parceria Inabalável",
       description: "Um ano de muita sintonia e momentos inesquecíveis. Cada rolê, cada conversa e cada risada provaram que qualquer momento simples vira uma grande festa quando estamos juntos!",
-      photoUrl: foto2Santos
+      photoUrl: timeline2023
     },
     {
       id: "tl-3",
       date: "2024 - Sempre Juntos",
       title: "Sempre Fechados",
       description: "Em todos os momentos, bons ou difíceis, o apoio sempre esteve ali sem precisar pedir. Compartilhando açaí, sorvete e as conversas mais sinceras da vida.",
-      photoUrl: foto1Acai
+      photoUrl: timeline2024
     },
     {
       id: "tl-4",
       date: "2025 - Conquistas",
       title: "Lado a Lado",
       description: "Comemorar cada vitória e cada passo na sua trajetória sempre foi tão alegre quanto comemorar as minhas próprias. Uma amizade para se orgulhar todos os dias!",
-      photoUrl: foto4Natureza
+      photoUrl: timeline2025
     },
     {
       id: "tl-5",
       date: "2026 - Ano Atual",
       title: "Sintonia Contínua",
       description: "Mesmo com o passar do tempo, nossa amizade continua leve, engraçada e cheia de novas histórias. E que continuemos construindo muito mais recordes e memórias!",
-      photoUrl: foto3Cabeca
+      photoUrl: timeline2026
     }
   ],
   memories: [
