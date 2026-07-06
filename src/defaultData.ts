@@ -21,7 +21,6 @@ import foto1Acai from './assets/images/foto1_acai.jpg';
 import foto2Santos from './assets/images/foto2_santos.jpg';
 import foto3Cabeca from './assets/images/foto3_cabeca_para_baixo.jpg';
 import foto4Natureza from './assets/images/foto4_natureza.jpg';
-import foto5Escola from './assets/images/foto5_escola.jpg';
 
 import timeline2022 from './assets/images/timeline_2022.jpg';
 import timeline2023 from './assets/images/timeline_2023.jpg';
@@ -41,15 +40,13 @@ export const defaultBirthdayData: BirthdayData = {
     foto1Acai,
     foto2Santos,
     foto3Cabeca,
-    foto4Natureza,
-    foto5Escola
+    foto4Natureza
   ],
   photoCaptions: [
     "A primeira de muitas, nossa primeira foto com açaí!",
     "Talvez nossa melhor foto até hoje.",
     "Não sei, me traz uma vibe boa essa aqui.",
-    "Essa é só engraçada, mas eu acho muito boa kkkkk",
-    "Muitas risadas, conversas e momentos inesquecíveis!"
+    "Essa é só engraçada, mas eu acho muito boa kkkkk"
   ],
   timeline: [
     {
