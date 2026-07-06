@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 interface FriendshipTimerProps {
   startDateStr: string;
@@ -107,10 +107,10 @@ export default function FriendshipTimer({ startDateStr }: FriendshipTimerProps) 
             <Clock size={12} /> Marcador do Tempo
           </span>
           <h3 className="serif-title text-2xl sm:text-3xl text-zinc-950 dark:text-zinc-50 font-semibold mb-2">
-            Nossa Jornada Juntas
+            Nossa jornada juntos
           </h3>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 font-serif italic">
-            A cada segundo, nossa amizade se fortalece. Estamos colecionando sorrisos desde: <span className="font-semibold text-[#c9a66b]">{formatStartDate(startDateStr)}</span>
+            Olha a quantidade de tempo que você gastou comigo. Estamos juntos nessa desde: <span className="font-semibold text-[#c9a66b]">{formatStartDate(startDateStr)}</span>
           </p>
         </div>
 
@@ -131,11 +131,6 @@ export default function FriendshipTimer({ startDateStr }: FriendshipTimerProps) 
         </div>
 
         <div className="mt-8 flex flex-wrap gap-4 justify-center items-center text-xs text-zinc-500 dark:text-zinc-400 relative z-10 border-t border-[#e5e1d8] dark:border-zinc-800/80 pt-6">
-          <span className="flex items-center gap-1">
-            <Calendar size={12} className="text-[#c9a66b]" />
-            Parceria Inabalável
-          </span>
-          <span className="hidden sm:inline">•</span>
           <span className="flex items-center gap-1 font-serif italic">
             ✨ {timePassed.years * 365 + timePassed.months * 30 + timePassed.days} Dias de pura cumplicidade
           </span>

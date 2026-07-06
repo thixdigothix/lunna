@@ -17,6 +17,7 @@ export interface CuriosityItem {
   id: string;
   label: string;
   value: string;
+  stat?: string; // Optional prominent statistical number (e.g. "128,9 mil")
   icon: string; // e.g., 'Heart', 'Tv', 'Pizza', 'Sparkles', 'Smile'
 }
 

@@ -7,7 +7,8 @@ import { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { 
   Heart, Sparkles, Gift, Sun, Moon, Maximize2, X, Music, 
-  ChevronDown, BookOpen, Star, Zap, Pizza, Tv, Smile, Play, Eye
+  ChevronDown, BookOpen, Star, Zap, Pizza, Tv, Smile, Play, Eye,
+  MessageSquare, Send, MessageCircle, PlusCircle, BarChart2, TrendingUp
 } from 'lucide-react';
 
 import { BirthdayData } from './types';
@@ -16,7 +17,6 @@ import { resolveImageUrl } from './imageResolver';
 import FriendshipTimer from './components/FriendshipTimer';
 import StarSky from './components/StarSky';
 import Timeline from './components/Timeline';
-import SecretAdminPanel from './components/SecretAdminPanel';
 
 function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isModal?: boolean }) {
   const [error, setError] = useState(false);
@@ -78,39 +78,12 @@ export default function App() {
   const [surpriseUnlocked, setSurpriseUnlocked] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
   const [selectedPhotoCaption, setSelectedPhotoCaption] = useState<string | null>(null);
-  const [openedSecret, setOpenedSecret] = useState<number | null>(null);
   const [finalGiftOpened, setFinalGiftOpened] = useState(false);
   const [floatingHearts, setFloatingHearts] = useState<{id: number, left: number, size: number, delay: number, duration: number}[]>([]);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
-
-  // Secret admin keyboard shortcut (Alt+E or F2)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.altKey && e.key.toLowerCase() === 'e') || e.key === 'F2') {
-        e.preventDefault();
-        setIsAdminOpen(prev => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
   
   // Typing state for long message
   const [typedMessage, setTypedMessage] = useState("");
   const letterRef = useRef<HTMLDivElement | null>(null);
-
-  // Sync state to local storage
-  const handleUpdateData = (newData: BirthdayData) => {
-    setData(newData);
-    localStorage.setItem('birthday_tribute_data_v8', JSON.stringify(newData));
-  };
-
-  const handleResetData = () => {
-    if (window.confirm("Deseja realmente voltar aos dados padrões de exemplo para a Lunna? Isso limpará suas edições personalizadas atuais.")) {
-      setData(defaultBirthdayData);
-      localStorage.setItem('birthday_tribute_data_v8', JSON.stringify(defaultBirthdayData));
-    }
-  };
 
   // Ensure Dark class is always on root element
   useEffect(() => {
@@ -216,6 +189,18 @@ export default function App() {
         return <Heart className="text-rose-500 fill-current animate-pulse-slow" size={24} />;
       case 'Smile':
         return <Smile className="text-amber-500" size={24} />;
+      case 'MessageSquare':
+        return <MessageSquare className="text-emerald-500" size={24} />;
+      case 'Send':
+        return <Send className="text-sky-500" size={24} />;
+      case 'MessageCircle':
+        return <MessageCircle className="text-rose-500" size={24} />;
+      case 'PlusCircle':
+        return <PlusCircle className="text-[#c9a66b]" size={24} />;
+      case 'BarChart2':
+        return <BarChart2 className="text-purple-500" size={24} />;
+      case 'TrendingUp':
+        return <TrendingUp className="text-blue-500" size={24} />;
       default:
         return <Sparkles className="text-purple-500" size={24} />;
     }
@@ -240,15 +225,6 @@ export default function App() {
             ❤
           </div>
         ))}
-      </div>
-
-      {/* FIXED FLOATING CONTROLS PANEL */}
-      <div className="fixed top-6 left-6 z-40 flex items-center gap-3">
-        {/* Display Status Indicator */}
-        <div className="hidden md:flex items-center gap-1.5 px-3 py-1 bg-[#fdfbf7]/95 dark:bg-zinc-900/95 border border-[#c9a66b]/30 dark:border-zinc-800 rounded-none text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pointer-events-none shadow-sm font-serif italic">
-          <span className="w-2 h-2 rounded-full bg-[#c9a66b] animate-pulse"></span>
-          Modo Homenagem Ativo
-        </div>
       </div>
 
       {/* ----- HERO SECTION ----- */}
@@ -319,7 +295,7 @@ export default function App() {
             </span>
             <h3 className="serif-title text-xl sm:text-2xl font-bold text-zinc-850 dark:text-zinc-200">{data.gateLockedTitle || "Surpresa Guardada com Chave de Ouro"}</h3>
             <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-sm mt-1.5 mb-5 font-serif italic">
-              {data.gateLockedSubtitle || "Toda a linha do tempo, galeria polaroid de lembranças, curiosidades divertidas e a trilha sonora especial estão escondidas atrás do baú."}
+              {data.gateLockedSubtitle || "Toda a linha do tempo, álbum de fotos, curiosidades divertidas e a trilha sonora especial estão escondidas atrás do baú."}
             </p>
             <button
               onClick={handleOpenSurprise}
@@ -338,10 +314,6 @@ export default function App() {
               {/* Typewriter message card */}
               {surpriseUnlocked && (
                 <div className="bg-[#fdfbf7] dark:bg-zinc-900/90 border-4 border-double border-[#c9a66b]/30 p-6 sm:p-8 rounded-none text-center relative overflow-hidden backdrop-blur-md shadow-sm">
-                  {/* Decorative quote signs */}
-                  <span className="absolute top-1 left-2 text-7xl font-serif text-[#c9a66b]/20 select-none">“</span>
-                  <span className="absolute bottom-[-20px] right-2 text-7xl font-serif text-[#c9a66b]/20 select-none">”</span>
-
                   <div className="flex justify-center mb-4">
                     <div className="w-10 h-10 rounded-full bg-[#c9a66b]/10 flex items-center justify-center text-[#c9a66b]">
                       <Heart size={18} className="fill-current animate-pulse text-[#c9a66b]" />
@@ -352,10 +324,6 @@ export default function App() {
                     {typedMessage}
                     <span className="inline-block w-1.5 h-4 bg-[#c9a66b] ml-1 animate-pulse" />
                   </p>
-                  
-                  <div className="text-[10px] uppercase font-bold text-zinc-400 mt-4 tracking-widest font-serif italic">
-                    {data.realTimeTributeLabel || "Homenagem em tempo real"}
-                  </div>
                 </div>
               )}
 
@@ -375,13 +343,13 @@ export default function App() {
               
               <div className="text-center mb-12">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 border border-[#c9a66b]/40 text-[#c9a66b] rounded text-xs font-semibold uppercase tracking-wider mb-3 font-serif italic">
-                  {data.polaroidTitlePill || "📸 Galeria de Sorrisos"}
+                  {data.polaroidTitlePill || "📸 Álbum de fotos"}
                 </span>
                 <h2 className="serif-title text-3xl sm:text-4xl text-zinc-900 dark:text-zinc-100 font-bold mb-3">
-                  {data.polaroidTitle || "Nossos Momentos Polaroid"}
+                  {data.polaroidTitle || "Melhores momentos"}
                 </h2>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-md mx-auto font-serif italic">
-                  {data.polaroidSubtitle || "Algumas das nossas melhores versões congeladas no tempo. Clique em qualquer foto abaixo para ampliar em tela cheia com legenda!"}
+                  {data.polaroidSubtitle || "Algumas das nossas melhores fotos de todos os tempos. Clica em qualquer foto abaixo e dá pra ampliar pra ver melhor"}
                 </p>
               </div>
 
@@ -412,11 +380,8 @@ export default function App() {
                     {/* Handwriting style label caption */}
                     <div className="mt-4 text-center">
                       <p className="handwritten text-xl sm:text-2xl text-zinc-750 dark:text-[#dfbc83] leading-tight">
-                        {data.photoCaptions[idx] || "Nossos sorrisos favoritos..."}
+                        {data.photoCaptions[idx] || "Nossas fotos favoritas..."}
                       </p>
-                      <span className="text-[10px] font-serif italic text-zinc-400 mt-2 block">
-                        Momentos Especiais #{idx + 1}
-                      </span>
                     </div>
                   </div>
                 ))}
@@ -456,64 +421,6 @@ export default function App() {
           </section>
 
 
-          {/* ----- SECTION 7: SECRET MESSAGES (CLICK TO OPEN) ----- */}
-          <section className="py-16 bg-[#fdfbf7] dark:bg-[#121211] border-b border-[#e5e1d8] dark:border-zinc-800 relative">
-            <div className="max-w-4xl mx-auto px-4">
-              
-              <div className="text-center mb-12">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 border border-[#c9a66b]/40 text-[#c9a66b] rounded text-xs font-semibold uppercase tracking-wider mb-3 font-serif italic">
-                  {data.secretTitlePill || "🎁 Baú Misterioso"}
-                </span>
-                <h2 className="serif-title text-3xl sm:text-4xl text-zinc-900 dark:text-zinc-50 font-bold mb-3">
-                  {data.secretTitle || "Mensagens Secretas"}
-                </h2>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto font-serif italic">
-                  {data.secretSubtitle || "Escondi pequenos bilhetes cheios de afeto para você. Toque em qualquer um dos presentes embrulhados abaixo para ler!"}
-                </p>
-              </div>
-
-              {/* Wrapped gifts container */}
-              <div className="flex flex-wrap items-center justify-center gap-6">
-                {data.secretMessages.map((text, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setOpenedSecret(openedSecret === idx ? null : idx)}
-                    className={`p-6 bg-[#fdfbf7] dark:bg-zinc-900/80 rounded-none border border-[#e5e1d8] dark:border-zinc-800 shadow-md relative overflow-hidden transition-all duration-300 cursor-pointer focus:ring-2 focus:ring-[#c9a66b] text-left ${openedSecret === idx ? 'w-full max-w-xl scale-100 border-4 border-double border-[#c9a66b]' : 'w-44 h-44 flex flex-col justify-center items-center text-center hover:scale-105 active:scale-95'}`}
-                  >
-                    {openedSecret === idx ? (
-                      <div className="space-y-3 relative">
-                        {/* Opened layout */}
-                        <div className="flex justify-between items-center border-b border-[#e5e1d8] dark:border-zinc-805 pb-2">
-                          <span className="text-xs font-bold text-[#c9a66b] flex items-center gap-1 font-serif">
-                            <Sparkles size={12} className="text-[#c9a66b]" /> Bilhete Secreto #{idx + 1} Aberto!
-                          </span>
-                          <span className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold font-serif italic">Fechar ✕</span>
-                        </div>
-                        <p className="handwritten text-2xl text-[#c9a66b] dark:text-[#dfbc83] leading-relaxed py-1">
-                          {text}
-                        </p>
-                        <div className="text-[10px] text-zinc-400 font-serif italic">
-                          Escrito do fundo do coração para iluminar o seu dia!
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-center gap-2 select-none">
-                        {/* Closed layout with colorful packages */}
-                        <div className={`w-14 h-14 bg-gradient-to-br from-[#c9a66b] to-[#8c7b6c] rounded-none flex items-center justify-center text-white shadow-md animate-bounce`}>
-                          <Gift size={26} className="text-[#fdfbf7]" />
-                        </div>
-                        <span className="text-xs font-serif font-semibold text-zinc-700 dark:text-zinc-250 mt-2 block">Presente #{idx + 1}</span>
-                        <span className="text-[10px] uppercase font-bold tracking-widest text-[#c9a66b] mt-1 font-serif italic">Clique para ler</span>
-                      </div>
-                    )}
-                  </button>
-                ))}
-              </div>
-
-            </div>
-          </section>
-
-
           {/* ----- SECTION 8: CURIOCIDADES SOBRE ELA ----- */}
           <section className="py-16 bg-[#fdfbf7] dark:bg-[#121211] border-b border-[#e5e1d8] dark:border-zinc-800">
             <div className="max-w-4xl mx-auto px-4">
@@ -531,28 +438,37 @@ export default function App() {
               </div>
 
               {/* Bento Grid layout of features */}
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-6 gap-4 sm:gap-5">
                 {data.curiosities.map((item, index) => {
-                  // Span pattern: first & last span 3, middle span 2
-                  const colSpanClass = index % 3 === 0 ? 'md:col-span-3' : 'md:col-span-2';
+                  // Symmetrical bento pattern: Banner (6), then pairs (3+3) or triplets (2+2+2) depending on total
+                  const bentoPattern = data.curiosities.length === 6 
+                    ? ['md:col-span-6', 'md:col-span-3', 'md:col-span-3', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2']
+                    : ['md:col-span-6', 'md:col-span-3', 'md:col-span-3', 'md:col-span-3', 'md:col-span-3', 'md:col-span-3'];
+                  const colSpanClass = bentoPattern[index % bentoPattern.length];
+                  const isBanner = index === 0;
                   
                   return (
                     <div 
                       key={item.id}
-                      className={`${colSpanClass} bg-[#fdfbf7] dark:bg-zinc-900/60 border border-[#e5e1d8] dark:border-zinc-800 p-6 rounded-none flex items-start gap-4 hover:scale-[1.01] hover:border-[#c9a66b] transition-all shadow-md relative overflow-hidden`}
+                      className={`${colSpanClass} ${isBanner ? 'bg-gradient-to-br from-[#fdfbf7] via-[#f8f4ec] to-[#f2eadd] dark:from-zinc-900 dark:via-zinc-900/90 dark:to-zinc-850/80 border-2 border-[#c9a66b]/60 shadow-lg' : 'bg-[#fdfbf7] dark:bg-zinc-900/60 border border-[#e5e1d8] dark:border-zinc-800 shadow-md'} p-6 sm:p-7 rounded-none flex flex-col sm:flex-row items-start gap-4 sm:gap-6 hover:scale-[1.01] hover:border-[#c9a66b] transition-all relative overflow-hidden`}
                     >
                       {/* Circle Graphic background decoration */}
-                      <div className="absolute -right-6 -bottom-6 w-20 h-20 bg-[#c9a66b]/5 rounded-full blur-xl pointer-events-none"></div>
+                      <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-[#c9a66b]/10 rounded-full blur-xl pointer-events-none"></div>
 
-                      <div className="p-3 bg-[#fdfbf7] dark:bg-zinc-800/80 rounded-none border border-[#c9a66b]/35 shrink-0">
+                      <div className={`p-3.5 bg-[#fdfbf7] dark:bg-zinc-800/80 rounded-none border ${isBanner ? 'border-[#c9a66b]/60 sm:scale-110 mt-1' : 'border-[#c9a66b]/35 mt-0.5'} shrink-0`}>
                         {renderCuriosityIcon(item.icon)}
                       </div>
 
-                      <div className="space-y-1">
+                      <div className="space-y-1.5 flex-1">
                         <h4 className="text-xs uppercase font-bold tracking-widest text-[#c9a66b] dark:text-[#dfbc83] font-serif italic">
                           {item.label}
                         </h4>
-                        <p className="text-sm sm:text-base font-semibold text-zinc-850 dark:text-zinc-200 leading-snug font-serif">
+                        {item.stat && (
+                          <div className={`${isBanner ? 'text-4xl sm:text-5xl lg:text-6xl font-black' : 'text-3xl sm:text-4xl font-extrabold'} text-transparent bg-clip-text bg-gradient-to-r from-[#b38d4c] via-[#c9a66b] to-[#8c7b6c] dark:from-[#dfbc83] dark:via-[#fff3dd] dark:to-[#c9a66b] tracking-tight font-sans drop-shadow-sm py-0.5`}>
+                            {item.stat}
+                          </div>
+                        )}
+                        <p className={`${isBanner ? 'text-base sm:text-lg' : 'text-sm sm:text-base'} font-medium text-zinc-700 dark:text-zinc-300 leading-snug font-serif`}>
                           {item.value || "Lembrança carinhosa em construção..."}
                         </p>
                       </div>
@@ -823,37 +739,8 @@ export default function App() {
           <div className="text-[9px] text-zinc-400 font-mono">
             {data.name} & Co. Constellation Inc.
           </div>
-          <div className="pt-2">
-            <button
-              onClick={() => setIsAdminOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#c9a66b]/10 hover:bg-[#c9a66b] text-[#c9a66b] hover:text-black border border-[#c9a66b]/40 text-[10px] uppercase font-bold tracking-widest transition-all rounded-none"
-            >
-              <Sparkles className="w-3 h-3" /> Abrir Painel Secreto de Edição (Alt+E)
-            </button>
-          </div>
         </div>
       </footer>
-
-      {/* Floating Secret Admin Panel Button */}
-      <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
-        <button
-          onClick={() => setIsAdminOpen(true)}
-          className="group flex items-center gap-2 bg-zinc-900/95 dark:bg-zinc-950/95 hover:bg-[#c9a66b] text-[#c9a66b] hover:text-black border-2 border-[#c9a66b] px-3.5 py-2.5 shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-105"
-          title="Abrir Painel Secreto de Edição (Alt+E ou F2)"
-        >
-          <Sparkles className="w-4 h-4 animate-spin-slow group-hover:text-black text-[#c9a66b]" />
-          <span className="text-xs font-serif font-bold uppercase tracking-wider">Painel Secreto de Edição</span>
-        </button>
-      </div>
-
-      {/* Secret Admin Panel Modal */}
-      <SecretAdminPanel
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-        data={data}
-        onUpdate={handleUpdateData}
-        onReset={handleResetData}
-      />
 
     </div>
   );

@@ -1,8 +1,27 @@
 import { BirthdayData } from './types';
+
+// ============================================================================
+// GUIA: COMO ADICIONAR MAIS FOTOS NO FUTURO SEM ERROS NO VERCEL / VITE
+// ============================================================================
+// MÉTODO 1 (Recomendado via Código / Build):
+// 1. Coloque o arquivo de imagem na pasta: /src/assets/images/
+// 2. VERIFIQUE O NOME DO ARQUIVO: Certifique-se de que o nome é exatamente igual
+//    ao que você está importando (sem -1, espaços ou caracteres especiais).
+//    Exemplo: se o arquivo for "foto5_praia.jpg", importe assim:
+//    import foto5Praia from './assets/images/foto5_praia.jpg';
+// 3. Adicione a variável (ex: foto5Praia) no array "photos" abaixo.
+//
+// MÉTODO 2 (Via pasta public/ - Super prático para o Vercel):
+// 1. Coloque sua imagem direto na pasta: /public/ (ex: /public/minha_foto.jpg)
+// 2. No código ou no painel administrativo do site, basta usar o caminho direto com barra:
+//    "/minha_foto.jpg" (não precisa usar o comando 'import' aqui no topo!).
+// ============================================================================
+
 import foto1Acai from './assets/images/foto1_acai.jpg';
 import foto2Santos from './assets/images/foto2_santos.jpg';
 import foto3Cabeca from './assets/images/foto3_cabeca_para_baixo.jpg';
 import foto4Natureza from './assets/images/foto4_natureza.jpg';
+import foto5Escola from './assets/images/foto5_escola.jpg';
 
 export const defaultBirthdayData: BirthdayData = {
   name: "Lunna",
@@ -27,31 +46,38 @@ export const defaultBirthdayData: BirthdayData = {
   timeline: [
     {
       id: "tl-1",
-      date: "Faculdade, Fevereiro de 2018",
-      title: "O Ponto de Partida",
-      description: "Nos conhecemos naquele corredor lotado de materiais por conta de um livro de cálculo emprestado. Quem diria que ali, entre risadas tímidas e ansiedade de calouros, nasceria uma amizade eterna e inseparável?",
-      photoUrl: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600"
+      date: "2022 - O Ponto de Partida",
+      title: "O Início de Tudo",
+      description: "O começo da nossa amizade. Quem diria que ali, entre risadas, conversas e o dia a dia, nasceria uma parceria tão incrível e inseparável?",
+      photoUrl: foto5Escola
     },
     {
       id: "tl-2",
-      date: "Verão de 2020",
-      title: "Primeira Viagem de Aventuras",
-      description: "Aquela ida impulsiva para o litoral norte. O carro antigo que resolveu dar problema na subida da serra, o pneu furado sob a chuva... e nós no acostamento tirando fotos e rindo alto. A prova definitiva de que qualquer tormenta vira festa com você!",
-      photoUrl: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&q=80&w=600"
+      date: "2023 - Aventuras",
+      title: "Parceria Inabalável",
+      description: "Um ano de muita sintonia e momentos inesquecíveis. Cada rolê, cada conversa e cada risada provaram que qualquer momento simples vira uma grande festa quando estamos juntos!",
+      photoUrl: foto2Santos
     },
     {
       id: "tl-3",
-      date: "Novembro de 2022",
-      title: "Apoio Inabalável",
-      description: "No momento mais cinza do meu ano, quando tudo parecia desmoronar, você apareceu sem avisar. Trouxe um pote gigante de sorvete de pistache, o abraço mais apertado do mundo e me fez ver que tudo aquilo passaria. Guardado no peito.",
-      photoUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=600"
+      date: "2024 - Sempre Juntos",
+      title: "Sempre Fechados",
+      description: "Em todos os momentos, bons ou difíceis, o apoio sempre esteve ali sem precisar pedir. Compartilhando açaí, sorvete e as conversas mais sinceras da vida.",
+      photoUrl: foto1Acai
     },
     {
       id: "tl-4",
-      date: "Maio de 2025",
-      title: "Conquistas de Mãos Dadas",
-      description: "Ver você subir naquele palco para receber o seu diploma foi um dos momentos em que meu peito mais explodiu de orgulho. Comemorar cada vitória e passo na sua carreira sempre foi e sempre será tão alegre quanto comemorar as minhas próprias.",
-      photoUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600"
+      date: "2025 - Conquistas",
+      title: "Lado a Lado",
+      description: "Comemorar cada vitória e cada passo na sua trajetória sempre foi tão alegre quanto comemorar as minhas próprias. Uma amizade para se orgulhar todos os dias!",
+      photoUrl: foto4Natureza
+    },
+    {
+      id: "tl-5",
+      date: "2026 - Ano Atual",
+      title: "Sintonia Contínua",
+      description: "Mesmo com o passar do tempo, nossa amizade continua leve, engraçada e cheia de novas histórias. E que continuemos construindo muito mais recordes e memórias!",
+      photoUrl: foto3Cabeca
     }
   ],
   memories: [
@@ -77,33 +103,38 @@ export const defaultBirthdayData: BirthdayData = {
   curiosities: [
     {
       id: "cur-1",
-      label: "Comida Favorita",
-      value: "Sushi caprichado e hambúrguer artesanal às sextas-feiras.",
-      icon: "Pizza"
+      label: "Total de Mensagens",
+      stat: "128,9 mil",
+      value: "mensagens trocadas entre nós desde seu antigo número",
+      icon: "MessageSquare"
     },
     {
       id: "cur-2",
-      label: "Série do Coração",
-      value: "Friends e Gilmore Girls (assiste em loop infinito).",
-      icon: "Tv"
+      label: "Minhas Mensagens",
+      stat: "70,6 mil",
+      value: "Mensagens que eu mandei",
+      icon: "Send"
     },
     {
       id: "cur-3",
-      label: "Melhor Qualidade",
-      value: "Lealdade feroz e uma empatia rara capaz de curar corações.",
-      icon: "Heart"
+      label: "Mensagens Suas",
+      stat: "58,3 mil",
+      value: "Mensagens que tu mandou",
+      icon: "MessageCircle"
     },
     {
       id: "cur-4",
-      label: "Mania Engraçada",
-      value: "Dar uma dancinha de vitória inexplicável quando come algo incrível.",
-      icon: "Smile"
+      label: "Maior Streak nossa",
+      stat: "153 Dias",
+      value: "Mandamos mensagens de 18/12/2022 até 19/05/2023",
+      icon: "PlusCircle"
     },
     {
       id: "cur-5",
-      label: "Símbolo dos Sonhos",
-      value: "Viajar o mundo inteiro munida de uma boa câmera e rindo alto.",
-      icon: "Sparkles"
+      label: "Primeira mensagem",
+      stat: "'oi thiagao, boa noite'",
+      value: "Essa foi a primeira mensagem entre nós, e thiagão?",
+      icon: "BarChart2"
     }
   ],
   secretMessages: [
@@ -156,29 +187,29 @@ export const defaultBirthdayData: BirthdayData = {
   surpriseBoxTitle: "Seu Presente Está Pronto!",
   surpriseBoxMessage: "Lunna, você é uma verdadeira joia na vida de todos que te cercam. Hoje celebramos você por inteiro! Que esta nova primavera traga o triplo da alegria que você espalha por aqui. Continue brilhando forte!",
 
-  polaroidTitlePill: "📸 Galeria de Sorrisos",
-  polaroidTitle: "Nossos Momentos Polaroid",
-  polaroidSubtitle: "Algumas das nossas melhores versões congeladas no tempo. Clique em qualquer foto abaixo para ampliar em tela cheia com legenda!",
+  polaroidTitlePill: "📸 Álbum de fotos",
+  polaroidTitle: "Melhores momentos",
+  polaroidSubtitle: "Algumas das nossas melhores fotos de todos os tempos. Clica em qualquer foto abaixo e dá pra ampliar pra ver melhor",
   
   timelineTitlePill: "✨ Nossa Linha do Tempo",
   timelineTitle: "Como Tudo Começou",
-  timelineSubtitle: "Viaje no tempo e relembre os momentos mais marcantes que moldaram a nossa amizade ao longo de todos estes anos. Cada data guarda um segredo precioso!",
+  timelineSubtitle: "Lembre nossas primeiras fotos de cada ano!",
 
   secretTitlePill: "🎁 Baú Misterioso",
   secretTitle: "Mensagens Secretas",
   secretSubtitle: "Escondi pequenos bilhetes cheios de afeto para você. Toque em qualquer um dos presentes embrulhados abaixo para ler!",
 
-  curiositiesTitlePill: "🔍 Fatos Engraçados",
-  curiositiesTitle: "Curiosidades Sobre Ela",
-  curiositiesSubtitle: "Porque conhecer e amar você rindo dessas pequenas manias e características incríveis!",
+  curiositiesTitlePill: "🔍 Fatos das Mensagens",
+  curiositiesTitle: "Curiosidades sobre nós",
+  curiositiesSubtitle: "Algumas coisas que vi em sites duvidosos e acredito ser verdade (atualizado junho 2026).",
 
-  playlistTitlePill: "🎵 Trilha Sonora Especial",
-  playlistTitleText: "Nossa Playlist do Core",
-  playlistDescription: "Músicas que embalaram nossos papos, viagens de carro ou que me fazem lembrar do seu abraço instantaneamente.",
+  playlistTitlePill: "🎵 Trilha Sonora",
+  playlistTitleText: "Playlist",
+  playlistDescription: "Algumas poucas músicas que por diferentes razões, me lembram você.",
 
-  starsTitlePill: "🌌 Céu de Recordações",
-  starsTitle: "Constelação de Desejos",
-  starsSubtitle: "Passe o mouse ou toque nas estrelas cintilantes do céu noturno para revelar votos de felicidade ocultos!",
+  starsTitlePill: "🌌 Céu de meiguices e amores",
+  starsTitle: "Gêmeos e Câncer?",
+  starsSubtitle: "Passe o mouse ou toque nas estrelas para revelar coisas ocultas!",
 
   // Default values for customizable text properties
   heroBadgeText: "PARABÉNS!!!",
@@ -186,7 +217,7 @@ export const defaultBirthdayData: BirthdayData = {
   heroBtnText: "Abrir Surpresa",
   heroScrollHelperText: "Ver Homenagem",
   gateLockedTitle: "Surpresa Guardada com Chave de Ouro",
-  gateLockedSubtitle: "Toda a linha do tempo, galeria polaroid de lembranças, curiosidades divertidas e a trilha sonora especial estão escondidas atrás do baú.",
+  gateLockedSubtitle: "Toda a linha do tempo, álbum de fotos, curiosidades divertidas e a trilha sonora especial estão escondidas atrás do baú.",
   gateLockedBtn: "Revelar Homenagem Agora ✨",
   realTimeTributeLabel: "Homenagem em tempo real",
   playlistLabel: "Fitas cassete digitais",
