@@ -61,3 +61,20 @@ Se você preferir organizar os arquivos junto com os componentes na pasta `src`,
 
 ## 🛠️ Como o sistema resolve as imagens por trás dos panos?
 O projeto conta com um resolvedor inteligente em `/src/imageResolver.ts`. Ele utiliza `import.meta.glob` para ler e empacotar automaticamente as imagens de `src/assets/images/` no Vite e também fazer o fallback para caminhos da pasta `public/`. Por isso, desde que o **nome do arquivo seja idêntico ao referenciado**, tudo funcionará com perfeição!
+
+---
+
+## ⚡ Correção Importante para o Vercel (`vercel.json`)
+Anteriormente, as imagens não carregavam na Vercel porque o arquivo `vercel.json` estava redirecionando **todas** as requisições (incluindo `.jpg` e `.png`) para o `index.html`. 
+O arquivo `vercel.json` foi atualizado com uma regra especial que protege todos os arquivos de imagem e assets estáticos:
+```json
+{
+  "rewrites": [
+    {
+      "source": "/((?!api/|assets/|.*\\..*$).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+Com essa correção no `vercel.json`, qualquer foto colocada na pasta `public/` ou em `src/assets/images/` funcionará tanto no Google AI Studio quanto na Vercel sem nenhum redirecionamento incorreto!

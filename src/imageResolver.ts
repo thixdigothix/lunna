@@ -54,5 +54,10 @@ export function resolveImageUrl(path: string | undefined): string {
     return path.replace('public/', '/');
   }
 
+  // 5. Ensure leading slash if it looks like a relative filename (e.g., "foto1_acai.jpg" or "timeline_2022.jpg")
+  if (!path.startsWith('/') && !path.startsWith('http')) {
+    return '/' + path;
+  }
+
   return path;
 }
