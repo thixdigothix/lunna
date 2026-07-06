@@ -1,6 +1,6 @@
 import { TimelineEvent } from '../types';
 import { Calendar, Heart } from 'lucide-react';
-import { resolveImageUrl } from '../imageResolver';
+import { resolveImageUrl, getFallbackImageUrl } from '../imageResolver';
 
 interface TimelineProps {
   events: TimelineEvent[];
@@ -70,6 +70,14 @@ export default function Timeline({ events, titlePill, title, subtitle, onPhotoCl
                       src={resolveImageUrl(event.photoUrl)} 
                       alt={event.title}
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const fallback = getFallbackImageUrl(target.src);
+                        if (target.src !== fallback && !target.src.endsWith(fallback) && !target.dataset.triedFallback) {
+                          target.dataset.triedFallback = "true";
+                          target.src = fallback;
+                        }
+                      }}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

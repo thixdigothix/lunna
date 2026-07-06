@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Star, Sparkles, X, Heart } from 'lucide-react';
 import { SkyMessage } from '../types';
-import { resolveImageUrl } from '../imageResolver';
+import { resolveImageUrl, getFallbackImageUrl } from '../imageResolver';
 
 interface StarSkyProps {
   messages: SkyMessage[];
@@ -113,6 +113,14 @@ export default function StarSky({ messages, titlePill, title, subtitle, onPhotoC
                       alt="" 
                       className="w-full h-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const fallback = getFallbackImageUrl(target.src);
+                        if (target.src !== fallback && !target.src.endsWith(fallback) && !target.dataset.triedFallback) {
+                          target.dataset.triedFallback = "true";
+                          target.src = fallback;
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/photo:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                       <span className="px-2.5 py-1 bg-zinc-900/90 text-[10px] text-yellow-300 border border-yellow-500/20 rounded shadow-md font-serif italic uppercase tracking-wider scale-90 group-hover/photo:scale-100 transition-all duration-300">

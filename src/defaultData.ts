@@ -41,13 +41,15 @@ export const defaultBirthdayData: BirthdayData = {
     foto1Acai,
     foto2Santos,
     foto3Cabeca,
-    foto4Natureza
+    foto4Natureza,
+    foto5Escola
   ],
   photoCaptions: [
     "A primeira de muitas, nossa primeira foto com açaí!",
     "Talvez nossa melhor foto até hoje.",
     "Não sei, me traz uma vibe boa essa aqui.",
-    "Essa é só engraçada, mas eu acho muito boa kkkkk"
+    "Essa é só engraçada, mas eu acho muito boa kkkkk",
+    "Muitas risadas, conversas e momentos inesquecíveis!"
   ],
   timeline: [
     {

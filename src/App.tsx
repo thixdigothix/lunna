@@ -13,7 +13,7 @@ import {
 
 import { BirthdayData } from './types';
 import { defaultBirthdayData } from './defaultData';
-import { resolveImageUrl } from './imageResolver';
+import { resolveImageUrl, getFallbackImageUrl } from './imageResolver';
 import FriendshipTimer from './components/FriendshipTimer';
 import StarSky from './components/StarSky';
 import Timeline from './components/Timeline';
@@ -46,28 +46,25 @@ function PolaroidImg({ src, index, isModal }: { src: string; index?: number; isM
       src={resolvedSrc}
       alt=""
       referrerPolicy="no-referrer"
-      onError={() => setError(true)}
+      onError={(e) => {
+        const target = e.currentTarget;
+        const fallback = getFallbackImageUrl(target.src);
+        if (target.src !== fallback && !target.src.endsWith(fallback) && !target.dataset.triedFallback) {
+          target.dataset.triedFallback = "true";
+          target.src = fallback;
+        } else {
+          setError(true);
+        }
+      }}
       className={isModal ? "max-h-[70vh] max-w-full object-contain" : "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"}
     />
   );
 }
 
 export default function App() {
-  // Persistence state
+  // Always load fresh data from defaultData.ts (clear legacy localStorage that cached old Unsplash timeline URLs)
   const [data, setData] = useState<BirthdayData>(() => {
-    const saved = localStorage.getItem('birthday_tribute_data_v8');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.name === "Mariana") {
-          localStorage.removeItem('birthday_tribute_data_v8');
-          return defaultBirthdayData;
-        }
-        return { ...defaultBirthdayData, ...parsed };
-      } catch {
-        return defaultBirthdayData;
-      }
-    }
+    localStorage.removeItem('birthday_tribute_data_v8');
     return defaultBirthdayData;
   });
 
