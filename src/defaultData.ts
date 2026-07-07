@@ -45,37 +45,37 @@ export const defaultBirthdayData: BirthdayData = {
   timeline: [
     {
       id: "tl-1",
-      date: "2022 - O Ponto de Partida",
+      date: "27-04-2022 - Com Mavix",
       title: "O Início de Tudo",
-      description: "O começo da nossa amizade. Quem diria que ali, entre risadas, conversas e o dia a dia, nasceria uma parceria tão incrível e inseparável?",
+      description: "A nossa primeira foto juntos, com a presença de Mavix e Mateus Quinto",
       photoUrl: "/timeline_2022.jpg"
     },
     {
       id: "tl-2",
-      date: "2023 - Aventuras",
-      title: "Parceria Inabalável",
-      description: "Um ano de muita sintonia e momentos inesquecíveis. Cada rolê, cada conversa e cada risada provaram que qualquer momento simples vira uma grande festa quando estamos juntos!",
+      date: "01-02-2023 - Nas redondezas",
+      title: "No prédio de sua vó",
+      description: "Nos encontramos pós seus primeiros dias de CSP, não lembro muito o que tava rolando, mas esse é o contexto.",
       photoUrl: "/timeline_2023.jpg"
     },
     {
       id: "tl-3",
-      date: "2024 - Sempre Juntos",
-      title: "Sempre Fechados",
-      description: "Em todos os momentos, bons ou difíceis, o apoio sempre esteve ali sem precisar pedir. Compartilhando açaí, sorvete e as conversas mais sinceras da vida.",
+      date: "17-05-2024 - Ônibus juntos",
+      title: "Só em MAIO?",
+      description: "Provavelmente a gente deve ter se trombado antes de maio, mas nossa primeira foto só saiu oficialmente em maio, o que é uma vergonha.",
       photoUrl: "/timeline_2024.png"
     },
     {
       id: "tl-4",
-      date: "2025 - Conquistas",
-      title: "Lado a Lado",
-      description: "Comemorar cada vitória e cada passo na sua trajetória sempre foi tão alegre quanto comemorar as minhas próprias. Uma amizade para se orgulhar todos os dias!",
+      date: "12-01-2025 - Açaí",
+      title: "Feirinha do alto",
+      description: "Janeiro pelo menos. O dia que eu andei até sua casa pois estava sem nada pra fazer. Dia de algumas outras fotos, mas essa é a primeira.",
       photoUrl: "/timeline_2025.png"
     },
     {
       id: "tl-5",
-      date: "2026 - Ano Atual",
-      title: "Sintonia Contínua",
-      description: "Mesmo com o passar do tempo, nossa amizade continua leve, engraçada e cheia de novas histórias. E que continuemos construindo muito mais recordes e memórias!",
+      date: "14-02-2026 - This Year",
+      title: "Alto again",
+      description: "Esse não é o primeiro registro nosso de 2026, mas o primeiro é um vídeo e eu não faço ideia de como colocar um vídeo nesse site. Enfim, bela foto.",
       photoUrl: "/timeline_2026.png"
     }
   ],
