@@ -184,7 +184,7 @@ export const defaultBirthdayData: BirthdayData = {
   finalLetterSignOff: "Sua melhor amizade,",
   finalLetterSignature: "Com Carinho e Amor Infinito",
   surpriseBoxTitle: "Seu Presente Está Pronto!",
-  surpriseBoxMessage: "Lunna, você é uma verdadeira joia na vida de todos que te cercam. Hoje celebramos você por inteiro! Que esta nova primavera traga o triplo da alegria que você espalha por aqui. Continue brilhando forte!",
+  surpriseBoxMessage: "Lunna, aproveita bem seu dia! Obrigado por me fazer aprender a programar de forma não intencional. Mas de verdade, minha última mensagem será só um simples e relevante EU TE AMO!",
 
   polaroidTitlePill: "📸 Álbum de fotos",
   polaroidTitle: "Melhores momentos",
@@ -215,17 +215,17 @@ export const defaultBirthdayData: BirthdayData = {
   heroTitlePrefix: "Feliz Aniversário,",
   heroBtnText: "Abrir Surpresa",
   heroScrollHelperText: "Ver Homenagem",
-  gateLockedTitle: "Surpresa Guardada com Chave de Ouro",
-  gateLockedSubtitle: "Toda a linha do tempo, álbum de fotos, curiosidades divertidas e a trilha sonora especial estão escondidas atrás do baú.",
-  gateLockedBtn: "Revelar Homenagem Agora ✨",
+  gateLockedTitle: "Surpresa Guardada",
+  gateLockedSubtitle: "Clique e descubra uma realidade normal, nada demais, mas bonitinha.",
+  gateLockedBtn: "Revelar ✨",
   realTimeTributeLabel: "Homenagem em tempo real",
   playlistLabel: "Fitas cassete digitais",
   finalLetterStamp: "Amor Real",
-  finalGiftSectionTitle: "Um Último Abraço Surpresa",
-  finalGiftSectionSubtitle: "Clique no presente acima para abrir seu abraço final e desencadear a constelação de confetes!",
+  finalGiftSectionTitle: "Uma última Surpresa",
+  finalGiftSectionSubtitle: "Clique no presente acima para abrir algo que deu mais trabalho do que eu gostaria de assumir.",
   finalGiftOpenedSubtitle: "Obrigado por celebrar esse dia tão caloroso! Compartilhe o amor.",
   finalGiftBtnText: "🎉 Jogar Mais Confetes!",
   finalGiftCloseModalText: "Fechar Janela",
   footerBadgeText: "Feito de amigo para amigo",
-  footerDescriptionText: "Homenagem exclusiva de aniversário criada com carinho eterno e felicidade. Todos os direitos de amizade reservados ©"
+  footerDescriptionText: "Homenagem exclusiva de aniversário criada com carinho. Todos os direitos de amizade reservados para Lunna Beatriz Rios Pinto ©"
 };
