@@ -72,11 +72,16 @@ export function resolveImageUrl(path: string | undefined): string {
  */
 export function getFallbackImageUrl(path: string | undefined): string {
   if (!path) return "";
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+  if (path.startsWith('data:')) {
     return path;
   }
+  // Extract filename from path (whether it is an absolute http URL, relative path, or hashed asset URL)
+  // E.g., "https://example.com/assets/timeline_2022-CY9vi5nM.jpg" -> "timeline_2022-CY9vi5nM.jpg"
   const rawFilename = path.split('/').pop() || '';
+  
+  // Strip the Vite production hash if present (e.g., "timeline_2022-CY9vi5nM.jpg" -> "timeline_2022.jpg")
   const cleanFilename = rawFilename.replace(/-[a-zA-Z0-9]{8,}(\.[a-zA-Z0-9]+)$/, '$1');
   if (!cleanFilename) return path;
-  return !cleanFilename.startsWith('/') ? '/' + cleanFilename : cleanFilename;
+  
+  return '/' + cleanFilename;
 }
