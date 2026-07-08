@@ -29,7 +29,7 @@ export const defaultBirthdayData: BirthdayData = {
   friendshipStartDate: "2022-04-13",
   heroSubtitle: "Um presente bobo de uma pessoa boba pra uma pessoa incrível.",
   heroSecondaryText: "Página criada com o objetivo de te presentear sem que você reclame",
-  realTimeTributeText: "Lunna, você é de longe a pessoa mais incrível que eu tive a oportunidade de conhecer. Sou muito grato por tudo e quis fazer esse site contando um pouco da nossa história.",
+  realTimeTributeText: "Lunna, você é de longe a pessoa mais incrível que eu tive a oportunidade de conhecer. Sou muito grato por tudo e quis fazer esse site contando um pouco da nossa história da forma mais bobinha do mundo.",
   photos: [
     foto1Acai,
     foto2Santos,
@@ -166,12 +166,10 @@ export const defaultBirthdayData: BirthdayData = {
   playlistTitle: "Melodias Unidas pela Amizade",
   playlistSubtitle: "A música tem o dom extraordinário de guardar momentos. Sempre que ouço essas notas, lembro de algum momento feliz que passamos lado a lado.",
   skyMessages: [
-    { id: "sky-1", text: "Obrigado por iluminar meus dias mais difíceis!", x: 15, y: 30, size: "md" },
-    { id: "sky-2", text: "Você é uma amiga verdadeiramente rara!", x: 42, y: 15, size: "lg" },
-    { id: "sky-3", text: "Lembro com carinho de cada pôr do sol compartilhado.", x: 78, y: 25, size: "md" },
-    { id: "sky-4", text: "Que todos os seus maiores sonhos se tornem realidade nesta nova fase!", x: 28, y: 65, size: "lg" },
-    { id: "sky-5", text: "Sempre estarei aqui por você, não importa a distância.", x: 60, y: 50, size: "sm" },
-    { id: "sky-6", text: "A nossa amizade é o meu tesouro mais precioso.", x: 84, y: 70, size: "md" }
+    { id: "sky-1", text: "O dia que você jurou que me amava e salvou o áudio no seu telefone! 🎧", x: 20, y: 30, size: "lg", photoUrl: "/whatsapp_1.jpeg" },
+    { id: "sky-2", text: "A sua reação fofíssima quando mandei o dever de casa... 'te ako'! 💖", x: 75, y: 25, size: "lg", photoUrl: "/whatsapp_2.jpeg" },
+    { id: "sky-3", text: "Deixando bem claro que meu amor não dependia de você me mandar os deveres! 😂", x: 35, y: 70, size: "lg", photoUrl: "/whatsapp_3.jpeg" },
+    { id: "sky-4", text: "Você é a única que ganhou as respostas... privilégio de melhor amiga! 🌟", x: 65, y: 65, size: "lg", photoUrl: "/whatsapp_4.jpeg" }
   ],
   videoUrl: "https://www.youtube.com/embed/8vKAtshbIao", // Atmospheric lo-fi / birthday instrumental track
   finalLetterTitle: "Minha Querida Amiga",
@@ -208,7 +206,7 @@ export const defaultBirthdayData: BirthdayData = {
 
   starsTitlePill: "🌌 Céu de meiguices e amores",
   starsTitle: "Gêmeos e Câncer?",
-  starsSubtitle: "Passe o mouse ou toque nas estrelas para revelar coisas ocultas!",
+  starsSubtitle: "Passe o mouse ou toque nas estrelas para revelar coisas ocultas que você provavelmente vai achar bobo!",
 
   // Default values for customizable text properties
   heroBadgeText: "PARABÉNS!!!",
@@ -226,6 +224,6 @@ export const defaultBirthdayData: BirthdayData = {
   finalGiftOpenedSubtitle: "Obrigado por celebrar esse dia tão caloroso! Compartilhe o amor.",
   finalGiftBtnText: "🎉 Jogar Mais Confetes!",
   finalGiftCloseModalText: "Fechar Janela",
-  footerBadgeText: "Feito de amigo para amigo",
+  footerBadgeText: "Feito pra uma baita cidadã",
   footerDescriptionText: "Homenagem exclusiva de aniversário criada com carinho. Todos os direitos de amizade reservados para Lunna Beatriz Rios Pinto ©"
 };

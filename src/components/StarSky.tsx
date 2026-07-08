@@ -111,7 +111,7 @@ export default function StarSky({ messages, titlePill, title, subtitle, onPhotoC
                     <img 
                       src={resolveImageUrl(selectedMessage.photoUrl)} 
                       alt="" 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover/photo:scale-105"
                       referrerPolicy="no-referrer"
                       onError={(e) => {
                         const target = e.currentTarget;
