@@ -166,10 +166,10 @@ export const defaultBirthdayData: BirthdayData = {
   playlistTitle: "Melodias Unidas pela Amizade",
   playlistSubtitle: "A música tem o dom extraordinário de guardar momentos. Sempre que ouço essas notas, lembro de algum momento feliz que passamos lado a lado.",
   skyMessages: [
-    { id: "sky-1", text: "O dia que você jurou que me amava e salvou o áudio no seu telefone! 🎧", x: 20, y: 30, size: "lg", photoUrl: "/WhatsApp Image 2026-07-08 at 11.12.33.jpeg" },
-    { id: "sky-2", text: "A sua reação fofíssima quando mandei o dever de casa... 'te ako'! 💖", x: 75, y: 25, size: "lg", photoUrl: "/WhatsApp Images 2026-07-08 at 11.12.33.jpeg" },
-    { id: "sky-3", text: "Deixando bem claro que meu amor não dependia de você me mandar os deveres! 😂", x: 35, y: 70, size: "lg", photoUrl: "/dsfWhatsApp Image 2026-07-08 at 11.12.34.jpeg" },
-    { id: "sky-4", text: "Você é a única que ganhou as respostas... privilégio de melhor amiga! 🌟", x: 65, y: 65, size: "lg", photoUrl: "/adadWhatsApp Image 2026-07-08 at 11.12.34.jpeg" }
+    { id: "sky-1", text: "O dia que você jurou que me amava e salvou o áudio no seu telefone! 🎧", x: 20, y: 30, size: "lg", photoUrl: "/whatsapp_1.jpeg" },
+    { id: "sky-2", text: "A sua reação fofíssima quando mandei o dever de casa... 'te ako'! 💖", x: 75, y: 25, size: "lg", photoUrl: "/whatsapp_2.jpeg" },
+    { id: "sky-3", text: "Deixando bem claro que meu amor não dependia de você me mandar os deveres! 😂", x: 35, y: 70, size: "lg", photoUrl: "/whatsapp_3.jpeg" },
+    { id: "sky-4", text: "Você é a única que ganhou as respostas... privilégio de melhor amiga! 🌟", x: 65, y: 65, size: "lg", photoUrl: "/whatsapp_4.jpeg" }
   ],
   videoUrl: "https://www.youtube.com/embed/8vKAtshbIao", // Atmospheric lo-fi / birthday instrumental track
   finalLetterTitle: "Minha Querida Amiga",
