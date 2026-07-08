@@ -29,7 +29,7 @@ export function resolveImageUrl(path: string | undefined): string {
 
   // 2. Try matching clean filename against bundledImages FIRST (works for "/timeline_2022.jpg", "timeline_2022.jpg", "/assets/timeline_2022-HASH.jpg", etc.)
   const rawFilename = path.split('/').pop() || '';
-  const cleanFilename = rawFilename.replace(/-[a-zA-Z0-9]{8,}(\.[a-zA-Z0-9]+)$/, '$1');
+  const cleanFilename = rawFilename.replace(/-[a-zA-Z0-9_-]{8,}(\.[a-zA-Z0-9]+)$/, '$1');
   if (cleanFilename) {
     for (const key in bundledImages) {
       if (key.endsWith('/' + cleanFilename) || key.endsWith(cleanFilename)) {
@@ -80,7 +80,7 @@ export function getFallbackImageUrl(path: string | undefined): string {
   const rawFilename = path.split('/').pop() || '';
   
   // Strip the Vite production hash if present (e.g., "timeline_2022-CY9vi5nM.jpg" -> "timeline_2022.jpg")
-  const cleanFilename = rawFilename.replace(/-[a-zA-Z0-9]{8,}(\.[a-zA-Z0-9]+)$/, '$1');
+  const cleanFilename = rawFilename.replace(/-[a-zA-Z0-9_-]{8,}(\.[a-zA-Z0-9]+)$/, '$1');
   if (!cleanFilename) return path;
   
   return '/' + cleanFilename;
