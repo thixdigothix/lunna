@@ -174,9 +174,9 @@ export const defaultBirthdayData: BirthdayData = {
   videoUrl: "https://www.youtube.com/embed/8vKAtshbIao", // Atmospheric lo-fi / birthday instrumental track
   finalLetterTitle: "Minha Querida Amiga",
   finalLetterBody: [
-    "Parece que foi ontem que a gente dividia piadas bobas no corredor, mas olhando para trás, vejo o quanto crescemos juntas. Você testemunhou minhas quedas, vibrou genuinamente com as minhas conquistas e construiu comigo um refúgio onde eu posso ser eu mesmo sem qualquer timidez ou máscara.",
-    "Nesse seu dia especial, quero que você entenda, do fundo da minha alma, o quão gigante é o valor da sua amizade. Você traz poesia para a rotina cansativa, calma onde reside o caos e uma leveza que poucas pessoas no mundo têm a sorte de carregar.",
-    "Desejo que esse novo ano da sua vida chegue repleto de gargalhadas espontâneas, saúde inabalável, sonhos realizados e viagens espontâneas. Estarei bem aqui, na primeira fileira, torcendo, protegendo e aplaudindo de pé cada novo passo seu.",
+    "Colocar o texto aqui depois.",
+    "",
+    "",
     "Feliz Aniversário para a melhor pessoa que eu conheço! Que você se sinta infinitamente amada hoje e sempre. ❤️"
   ],
   finalLetterSignOff: "Sua melhor amizade,",
